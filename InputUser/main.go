@@ -18,4 +18,5 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Printf("Привет,%s", input)
+
 }
