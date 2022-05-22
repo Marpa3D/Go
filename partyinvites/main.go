@@ -30,6 +30,7 @@ func main() {
 	loadTemplates()
 	http.HandleFunc("/", welcomeHandler)
 	http.HandleFunc("/list", listHandler)
+	http.HandleFunc("/form", formHandler)
 
 	err := http.ListenAndServe(":8000", nil)
 
@@ -44,4 +45,15 @@ func welcomeHandler(writer http.ResponseWriter, request *http.Request) {
 
 func listHandler(writer http.ResponseWriter, request *http.Request) {
 	templates["list"].Execute(writer, responses)
+}
+
+type formData struct {
+	*Rsvp
+	Errors []string
+}
+
+func formHandler(writer http.ResponseWriter, request *http.Request) {
+	templates["form"].Execute(writer, formData{
+		Rsvp: &Rsvp{}, Errors: []string{},
+	})
 }
