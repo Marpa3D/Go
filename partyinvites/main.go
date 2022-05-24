@@ -53,12 +53,28 @@ func formHandler(writer http.ResponseWriter, request *http.Request) {
 			Phone:      request.Form["phone"][0],
 			WillAttend: request.Form["willattend"][0] == "true",
 		}
-		responses = append(responses, &responseData)
-
-		if responseData.WillAttend {
-			templates["sanks"].Execute(writer, responseData.Name)
+		errors := []string{}
+		if responseData.Name == "" {
+			errors = append(errors, "Пожалуйста, введите Ваше имя")
+		}
+		if responseData.Email == "" {
+			errors = append(errors, "Пожалуйста, введите Вашу почту")
+		}
+		if responseData.Phone == "" {
+			errors = append(errors, "Пожалуйста, введите Ваш телефон")
+		}
+		if len(errors) > 0 {
+			templates["form"].Execute(writer, formData{
+				Rsvp: &responseData, Errors: errors,
+			})
 		} else {
-			templates["sorry"].Execute(writer, responseData.Name)
+			responses = append(responses, &responseData)
+
+			if responseData.WillAttend {
+				templates["sanks"].Execute(writer, responseData.Name)
+			} else {
+				templates["sorry"].Execute(writer, responseData.Name)
+			}
 		}
 	}
 }
