@@ -1,3 +1,4 @@
+// практика по дженерикам
 package main
 
 import "fmt"
@@ -10,9 +11,10 @@ func main() {
 	fmt.Println(Max(x, y))
 }
 
+// Создаем свой constraint Ordered для работы логического x > y
 type Ordered interface {
 	int | int8 | int16 | int32 | int64 |
-	uint | uint8 | uint16 | uint32 | uint64
+		uint | uint8 | uint16 | uint32 | uint64
 }
 
 func Max[T Ordered](x, y T) T {
