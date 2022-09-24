@@ -1,7 +1,9 @@
 // практика по дженерикам
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	fmt.Println(Max(4, 8))
