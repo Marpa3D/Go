@@ -10,4 +10,9 @@ func main() {
 	fmt.Println("Slice value:", slice, len(slice), cap(slice))
 	slice = append(slice, 20) // Добавление нового элемента
 	fmt.Println("Slice value:", slice, len(slice), cap(slice))
+
+	// итерирование по срезу
+	for i, v := range slice {
+		fmt.Println(i, v)
+	}
 }
