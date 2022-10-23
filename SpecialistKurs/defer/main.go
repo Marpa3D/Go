@@ -1,11 +1,23 @@
-// Практика defer
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"io"
+	"os"
+)
 
 func main() {
-	for i := 0; i < 8; i++ {
-		defer fmt.Println("Отложенный:", -i)
-		fmt.Println("Обычный:", i)
+	newfile, error := os.Create("Specialist.txt")
+	if error != nil {
+		fmt.Println("Error: Could not create file.")
+		return
 	}
+	defer newfile.Close()
+
+	if _, error = io.WriteString(newfile, "Learning Go!"); error != nil {
+		fmt.Println("Error: Could not write to file.")
+		return
+	}
+
+	newfile.Sync()
 }
