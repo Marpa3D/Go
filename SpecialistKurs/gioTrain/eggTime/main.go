@@ -34,9 +34,30 @@ func main() {
 			switch e := e.(type) {
 			// Это сообщение отправляется, когда приложение должно выполнить повторный рендеринг
 			case system.FrameEvent:
+
 				gtx := layout.NewContext(&ops, e)
-				btn := material.Button(th, &startButton, "Старт")
-				btn.Layout(gtx)
+
+				// Let's try out the flexbox layout concept:
+				layout.Flex{
+
+					// Вертикальное выравнивание, сверху вниз
+					Axis:    layout.Vertical,
+					Spacing: layout.SpaceStart,
+				}.Layout(gtx,
+					// Вставляем два жестких элемента:
+					// Сначала кнопка
+					layout.Rigid(func(gtx layout.Context) layout.Dimensions {
+						btn := material.Button(th, &startButton, "Start")
+						return btn.Layout(gtx)
+					},
+					),
+					// ... затем пустое пространство
+					layout.Rigid(
+						// Высота разделителя составляет 25 независимых от устройства пикселей
+						layout.Spacer{Height: unit.Dp(25)}.Layout,
+					),
+				)
+
 				e.Frame(gtx.Ops)
 			}
 		}
