@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	s := calc.Sum(9, 8)
+	s := calc.Sum(8, 8)
 	fmt.Println(s)
 }
