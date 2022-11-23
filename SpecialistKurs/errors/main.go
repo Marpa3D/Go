@@ -31,4 +31,8 @@ func main() {
 	} else {
 		fmt.Println(err)
 	}
+	// Сравнение значений переменой типа error с типом string
+	if err.Error() == "returnError() завершилась нормально!" {
+		fmt.Println("Сравнение через err.Error()")
+	}
 }
