@@ -8,5 +8,6 @@ import (
 
 func main() {
 	args := os.Args
-	fmt.Println(args)
+	fmt.Printf("Аргументы: %s\n", args)
+	fmt.Printf("Аргументы: %v", args[1:])
 }
