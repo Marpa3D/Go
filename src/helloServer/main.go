@@ -8,7 +8,15 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Привет, это сервер на Go!")
+		n, err := fmt.Fprintf(w, "Привет, это сервер на Go!")
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		fmt.Println(fmt.Sprintf("Колличество записанных байт: %d", n))
 	})
-	http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", nil)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
