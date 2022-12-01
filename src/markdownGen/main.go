@@ -12,6 +12,8 @@ func main() {
 	http.Handle("/", http.FileServer(http.Dir("public")))
 	http.ListenAndServe(":8080", nil)
 }
+
+// GenerateMarkdown - функция отображает HTML из поля формы
 func GenerateMarkdown(w http.ResponseWriter, r *http.Request) {
 	markdown := blackfriday.MarkdownCommon([]byte(r.FormValue("body")))
 	w.Write(markdown)
