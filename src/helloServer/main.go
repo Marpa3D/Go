@@ -6,17 +6,15 @@ import (
 	"net/http"
 )
 
-func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		n, err := fmt.Fprintf(w, "Привет, это сервер на Go!")
-		if err != nil {
-			fmt.Println(err)
-		}
+func handlerFunc(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "<h1> Welcome is my site!!! </h1>")
+}
 
-		fmt.Println(fmt.Sprintf("Колличество записанных байт: %d", n))
-	})
-	err := http.ListenAndServe(":8080", nil)
-	if err != nil {
-		fmt.Println(err)
-	}
+func main() {
+	http.HandleFunc("/", handlerFunc)
+	//time.Sleep(3 * time.Second)
+	fmt.Println("Старт сервера. Порт: 8080...")
+
+	// Запуск сервера
+	http.ListenAndServe(":8080", nil)
 }
