@@ -8,17 +8,18 @@ import (
 
 func main() {
 
-	fmt.Println(countSheep(1))
+	fmt.Println(countSheep(2))
 
 }
 
 func countSheep(num int) string {
 	// Your code here!
 	str := ""
-
-	for i := 0; i <= num; i++ {
-		str = fmt.Sprintf("%d sheep...", i)
-		//str = string(i)
+	if num == 0 {
+		fmt.Printf("0 sheep...")
+	}
+	for i := 1; i <= num; i++ {
+		str += fmt.Sprintf("%d sheep...", i)
 	}
 	return str
 }
