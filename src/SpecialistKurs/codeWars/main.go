@@ -1,29 +1,24 @@
 // Пакет strings - вставка пробелов между символами строки
-// Подсчет гласных во входящей строке
+// Считаем овец перед сном...)))
 package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 func main() {
 
-	s := "Hello WORLD!!!"
-	v := strings.SplitAfter(s, "")
-	fmt.Println(v)
-
-	fmt.Println(GetCount("hello dolly and Jhon!"))
+	fmt.Println(countSheep(1))
 
 }
 
-func GetCount(str string) (count int) {
-	// Enter solution here
-	count = 0
-	for i, _ := range str {
-		if str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u' {
-			count++
-		}
+func countSheep(num int) string {
+	// Your code here!
+	str := ""
+
+	for i := 0; i <= num; i++ {
+		str = fmt.Sprintf("%d sheep...", i)
+		//str = string(i)
 	}
-	return count
+	return str
 }
