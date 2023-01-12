@@ -6,7 +6,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printf("%v", Between(-1, 8))
+	fmt.Printf("%v", Between(-8, 8))
 }
 func Between(a, b int) []int {
 
