@@ -71,5 +71,44 @@ func main() {
 	fmt.Println("Длина runes в слове Марк:", utf8.RuneCountInString("Марк"), "runes")
 
 	// Вычисление емкости строки бессмысленно, т.к. строка(string) - это базовый тип в Go!
+	fmt.Println(cap([]rune(myRuneSlice)))
+
+	// 8. Сравнение строк на == и !=, начиная с версии Go 1.6
+	word1, word2 := "Петя", "Волк"
+	if word1 == word2 {
+		fmt.Println("Сторки равны")
+	} else {
+		fmt.Println("Строки не равны")
+	}
+
+	//9. Конкатенация строк +
+	word3 := word1 + word2
+	word4 := []rune(word3)
+	fmt.Printf(" %v\n ", string(word4))
+
+	// 10. Создатель строк ( например в java -> String Builder )
+	firstName := "Марк"
+	lastName := "Шваррхольд"
+	mainStr := fmt.Sprintf("%s ++++ %s", firstName, lastName)
+	fmt.Println(mainStr)
+
+	// 11. Строки strings НЕ ИЗМЕНЯЕМЫ!
+	// mainStr[0] = "M"
+
+	// 12. А слайсы (срезы) ИЗМЕНЯМЫ!!!)
+	mySlice1 := []rune(mainStr)
+	mySlice1[14] = 'ц'
+	mainStr = string(mySlice1)
+	fmt.Println("String mutation: ", mainStr)
+
+	// 13. Сравнение рун ==, !=
+	if 'W' == 'W' {
+		fmt.Println("Runes equal")
+	} else {
+		fmt.Println("Runes not equal")
+	}
+
+	// 14. Где живут полезные функции для работы со строками?
+	// пакет: package "strings"
 
 }
