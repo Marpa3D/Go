@@ -4,13 +4,18 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 )
 
 func main() {
-	str := "ДА, проверкА"
+	fmt.Println("Введите Ваше слово:")
+	input := bufio.NewScanner(os.Stdin)
+	input.Scan()
+	//str := "ДпроверкА"
+	str := input.Text()
 	result := []rune(str)
-	//resRune := utf8.RuneCountInString(str)
 	resItog := string(result[0]) + string(result[len(result)-1]) // Конкатенация строк
 	if resItog == "да" || resItog == "ДА" || resItog == "дА" || resItog == "Да" {
 		fmt.Println("СОГЛАСЕН")
