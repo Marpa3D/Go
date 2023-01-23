@@ -15,4 +15,8 @@ func add(a, b int) int {
 }
 func main() {
 	fmt.Println("Сумма двух целых чисел:", add(4, 4))
+
+	// другой способ
+	res := add // res имеет такой же тип, как и функция add: func (int, int) int
+	fmt.Println("Сумма двух целых чисел:", res(8, 8))
 }
