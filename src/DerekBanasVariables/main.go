@@ -48,5 +48,24 @@ func main() {
 	resultReplace := replacer.Replace(str)
 	pl(resultReplace)
 
+	pl("Length:", len(str)) // колличество байт в строке, а не символов
+	strRune := []rune(str)
+	fmt.Printf("Длина (колличесево) символов(рун):%c\t %d\n", strRune, len(strRune)) // кол-во символов
+	pl("Строка содержит это:", strings.Contains(str, "пример"))                      // проверяет, содериж ли это слово строка?
+
+	// Узнать индекс символа в строке
+	pl("Индекс буквы \"е\" в строке \"Это пример строки\"", strings.Index(str, "о"))
+
+	// Замена символа и поиск его повсюду
+	pl("Замена символа и поиск повсюду:", strings.Replace(resultReplace, "с", "0", -1))
+
+	// Удаление пробелов, escape-последовательностей
+	str1 := "\nНесколько-слов-для-теста\n"
+	pl("Обрезаем лишнее:", strings.TrimSpace(str1))
+	pl("Split \"-\": ", strings.Split(str1, "-"))
+	pl("Lower register:", strings.ToLower(str1))
+	pl("Upper register:", strings.ToUpper(str1))
+	pl("Prefix:", strings.HasPrefix("Это кошка", "Это"))        // проверка, есть ли такой префикс?
+	println("Suffix:", strings.HasSuffix("Это кошка", "кошка")) // а суффикс? true || false
 	pl("=====================================")
 }
