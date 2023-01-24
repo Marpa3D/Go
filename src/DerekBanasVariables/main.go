@@ -65,7 +65,7 @@ func main() {
 	pl("Split \"-\": ", strings.Split(str1, "-"))
 	pl("Lower register:", strings.ToLower(str1))
 	pl("Upper register:", strings.ToUpper(str1))
-	pl("Prefix:", strings.HasPrefix("Это кошка", "Это"))        // проверка, есть ли такой префикс?
-	println("Suffix:", strings.HasSuffix("Это кошка", "кошка")) // а суффикс? true || false
+	pl("Prefix:", strings.HasPrefix("суперкот", "супер"))    // проверка, есть ли такой префикс?
+	println("Suffix:", strings.HasSuffix("суперкот", "кот")) // а суффикс? true || false
 	pl("=====================================")
 }
