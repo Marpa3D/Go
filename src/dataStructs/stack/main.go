@@ -20,11 +20,20 @@ func (s *Stack) Pop() {
 	s.items = s.items[:len(s.items)-1]
 }
 
+// Проверка стека на наличие данных
 func (s *Stack) IsEmpty() bool {
 	if len(s.items) == 0 {
 		return true
 	}
 	return false
+}
+
+// Top возвращает последний добавленный елемент стека, если нет, то ноль и ошибку
+func (s *Stack) Top() (int, error) {
+	if s.IsEmpty() {
+		return 0, fmt.Errorf("Стек пустой!")
+	}
+	return s.items[len(s.items)-1], nil
 }
 
 func main() {
@@ -40,4 +49,7 @@ func main() {
 
 	st.Pop()
 	fmt.Printf("%+v\t adress: %p\t Длинна в байтах: %d\n", st, &st, len(st.items))
+
+	st.Top()
+	fmt.Println(st.Top())
 }
