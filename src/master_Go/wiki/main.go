@@ -4,6 +4,8 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"log"
+	"net/http"
 )
 
 // Структура страниц wiki. Описание, как эти данные будут храниться в памяти
@@ -28,7 +30,11 @@ func LoadFile(title string) (*Page, error) {
 		return nil, err
 	}
 	return &Page{Title: title, Body: body}, nil
+}
 
+// Обработчик запросов
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Привет, я люблю %s!", r.URL.Path[1:])
 }
 
 func main() {
@@ -40,4 +46,8 @@ func main() {
 
 	p2, _ := LoadFile("testPage")
 	fmt.Println(string(p2.Body))
+
+	// Обраотчик и сервер
+	http.HandleFunc("/", handler)
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
