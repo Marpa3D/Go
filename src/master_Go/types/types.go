@@ -3,7 +3,16 @@ package main
 
 import "fmt"
 
+func DomainForLocale(domain, locale string) {
+	if locale == "" {
+		fmt.Printf("en.%s", domain)
+	} else {
+		fmt.Printf("%s.%s", locale, domain)
+	}
+}
+
 func main() {
+	DomainForLocale("yandex.ru", "ru")
 	// INT TYPE
 	var i8 int8 = 127 // при -129  & 128 => константа -129 & 128 переполняет тип int8. Диапазон -128 до 127!
 	fmt.Printf("%T\n", i8)
