@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func linear_search(arr []int, target int) int {
+func linearSearch(arr []int, target int) int {
 
 	for i, _ := range arr {
 		if arr[i] == target {
@@ -17,5 +17,5 @@ func linear_search(arr []int, target int) int {
 
 func main() {
 	a := []int{1, 4, 5, 7, 9, 8, 10}
-	fmt.Println(linear_search(a, 8))
+	fmt.Println(linearSearch(a, 8))
 }
