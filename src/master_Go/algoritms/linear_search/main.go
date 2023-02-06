@@ -18,4 +18,5 @@ func linearSearch(arr []int, target int) int {
 func main() {
 	a := []int{1, 4, 5, 7, 9, 8, 10}
 	fmt.Println(linearSearch(a, 8))
+
 }
