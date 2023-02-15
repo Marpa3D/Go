@@ -29,4 +29,10 @@ func main() {
 	dst1 := make([]int, 2) // len(dst1) < len(src1)
 	copySlice1 := copy(dst1, src1)
 	fmt.Println(src1, dst1, copySlice1)
+
+	// Нарезка массива, реза, строки
+	arr := [5]int{1, 2, 3, 4, 5}
+	// Format arr[start:stop], диапазон нарезки здесь: start включительно, stop - не включая
+	a := arr[1:3]               // новый срез со значениями a[2, 3]
+	fmt.Printf("%+v\n%T", a, a) // a это уже срез, а не массив!
 }
