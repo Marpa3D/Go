@@ -16,4 +16,17 @@ func main() {
 	slice := []float64{10.5, 22.8}
 	numbers = append(numbers, slice...)
 	fmt.Println(numbers)
+
+	// Copy. Копирование элементов слайса из исходного в целевой
+	src := []int{1, 3, 5, 7}
+	dst := make([]int, len(src))
+	copySlice := copy(dst, src)
+	fmt.Println(src, dst, copySlice)
+
+	// Если длина целевого среза len == 0 , ничего не скопировать в него.
+	// Если его len < len исходного реза - скопируются только элементы, влезающие в len
+	src1 := []int{1, 3, 5}
+	dst1 := make([]int, 2) // len(dst1) < len(src1)
+	copySlice1 := copy(dst1, src1)
+	fmt.Println(src1, dst1, copySlice1)
 }
