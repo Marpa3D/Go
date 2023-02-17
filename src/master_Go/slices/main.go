@@ -1,7 +1,10 @@
 // Срезы (слайсы)
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 func main() {
 	// Обявления среза
@@ -32,5 +35,11 @@ func main() {
 	for index, value := range firstName {
 		fmt.Printf("Index: %+v Value: %+v\n", index, value)
 	}
+
+	// Чей размер в памяти больше - массива или среза?
+	arr := [4]int{1, 2, 3, 4}
+	slice1 := []int{1, 2, 3, 4}
+	fmt.Printf("Разммер массива в байтах: %d\n", unsafe.Sizeof(arr)) // массив весит больше = 32 байта!
+	fmt.Printf("Разммер среза в байтах: %d", unsafe.Sizeof(slice1))  // 3 элемента * на 8 байт = 24 байта!
 
 }
