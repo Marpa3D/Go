@@ -1,3 +1,3 @@
-module github.com/Marpa3D/Go/concurrency
+module concurrency
 
 go 1.18
