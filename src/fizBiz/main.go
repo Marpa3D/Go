@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"runtime"
+	"sync"
 	"time"
 )
 
@@ -15,7 +15,7 @@ func fb(n int) {
 	case fiz && !buz:
 		fmt.Println("Fiz")
 	case !fiz && buz:
-		fmt.Println("Buz")
+		fmt.Println("FizBuz")
 	default:
 		fmt.Println("Other (", n, ")")
 	}
@@ -23,12 +23,18 @@ func fb(n int) {
 
 func main() {
 	startTime := time.Now()
+	wg := sync.WaitGroup{}
 
 	for i := 0; i < 50000; i++ {
-		fb(i)
+		go func() {
+			wg.Add(1)
+			defer wg.Done()
+			fb(i)
+		}()
 	}
-
-	fmt.Println(runtime.NumCPU(), runtime.Version())
+	wg.Wait()
 	elapced := time.Since(startTime)
-	fmt.Printf("50 000 итераций за %.4f секунд", float64(elapced.Nanoseconds())/100_000_000_000.0)
+	fmt.Printf("50 000 итераций за %.4f секунд\n", float64(elapced.Nanoseconds())/100_000_000_000.0)
+
+	fmt.Printf("Done!")
 }
