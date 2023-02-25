@@ -9,18 +9,16 @@ import (
 
 //dup() - выводит из стандартного потока ввода повтор строки и колличество повторений
 func dup() {
-	counts := make(map[string]int) // хранилище входящих данных
+	counts := make(map[string]int)
 	input := bufio.NewScanner(os.Stdin)
-	for input.Scan() { // чтение данных из os.Stdin
+	for input.Scan() {
 		counts[input.Text()]++
 	}
-	// итерация по карте
-	for line, n := range counts {
-		if n > 1 {
-			fmt.Printf("%d\t%s", n, line)
+	for line, i := range counts {
+		if i > 1 {
+			fmt.Printf("%d\t%s", line, i)
 		}
 	}
-
 }
 func main() {
 	dup()
