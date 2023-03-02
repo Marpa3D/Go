@@ -17,6 +17,10 @@ func main() {
 	newFile, err = os.Create("test.txt")
 	if err != nil {
 		log.Fatal(err)
+		os.Exit(1)
 	}
 	newFile.Close()
+
+	// Очистка файла
+	err = os.Truncate("test.txt", 0)
 }
