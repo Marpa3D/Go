@@ -24,4 +24,7 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Printf("Записано байт: %d\n", bytWritten)
+
+	// Записываем в файл. Способ 2.
+
 }
