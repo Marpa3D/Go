@@ -1,10 +1,18 @@
 // Тестирование
 package main
 
-import "errors"
+import (
+	"errors"
+	"log"
+)
 
 func main() {
-
+	res, err := divide(100.0, 10.0)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	log.Println("Результат деления:", res)
 }
 
 func divide(x, y float64) (float64, error) {
