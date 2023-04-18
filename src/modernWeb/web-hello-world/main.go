@@ -16,4 +16,5 @@ func main() {
 	})
 	fmt.Println("Сервер запускается...")
 	_ = http.ListenAndServe(":8080", nil)
+
 }
