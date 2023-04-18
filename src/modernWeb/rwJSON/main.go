@@ -39,4 +39,30 @@ func main() {
 		log.Println("Формат не соответствует JSON", err)
 	}
 	log.Printf("unmarshalled: %v\n", unmarshalled)
+
+	// Запись из структуры в JSON
+	var mySlice []Person
+	m1 := Person{
+		FirstName: "Erik",
+		LastName:  "Clapton",
+		Color:     "black",
+		HasCat:    true,
+	}
+	mySlice = append(mySlice, m1)
+
+	m2 := Person{
+		FirstName: "Olivia",
+		LastName:  "Russ",
+		Color:     "white",
+		HasCat:    true,
+	}
+	mySlice = append(mySlice, m2)
+
+	marshall, err := json.MarshalIndent(mySlice, "", "    ")
+
+	if err != nil {
+		log.Println("Ошибка формата", err)
+	}
+	log.Printf("marshalled: %v", string(marshall))
+
 }
