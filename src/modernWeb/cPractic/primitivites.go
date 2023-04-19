@@ -8,11 +8,21 @@ import (
 func main() {
 	// Создан канал для общения между горутиной(анонимная функция) и главной горутиной main()
 	myChannel := make(chan string)
+	anotherChannel := make(chan string)
+
 	go func() {
 		myChannel <- "data"
 	}()
-	msg := <-myChannel
-	fmt.Println(msg)
 
+	go func() {
+		anotherChannel <- "anotherData"
+	}()
+	// select
+	select {
+	case msgMyChannel := <-myChannel:
+		fmt.Println(msgMyChannel)
+	case msgAnotherChannel := <-anotherChannel:
+		fmt.Println(msgAnotherChannel)
+	}
 	fmt.Println("Финальная функция")
 }
