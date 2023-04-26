@@ -2,9 +2,10 @@
 package main
 
 import (
-	"html/template"
+	"fmt"
 	"log"
 	"os"
+	"text/template"
 )
 
 func main() {
@@ -12,7 +13,15 @@ func main() {
 	if err != nil {
 		log.Println("Ошибка парсинга файла")
 	}
-	err = tpl.Execute(os.Stdout, nil)
+	fmt.Printf("Type tpl: %T\n, Value: %+v", tpl, tpl)
+
+	newFile, err := os.Create("./templates/index.html")
+	if err != nil {
+		log.Println("Ошибка создания файла")
+	}
+	defer newFile.Close()
+
+	err = tpl.Execute(newFile, nil)
 	if err != nil {
 		log.Fatalln(err)
 	}
