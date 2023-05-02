@@ -2,6 +2,7 @@
 package main
 
 import (
+	"io/ioutil"
 	"log"
 	"os"
 )
@@ -16,7 +17,7 @@ func main() {
 	}
 	defer file.Close()
 
-	// Запись слайса байт(он изменяем, в отличии от строки)
+	// 1.Запись слайса байт(он изменяем, в отличии от строки) с помощью os.OpenFile
 	byteSlice := []byte("Каждый может тебя чему то научить!")
 	byteWritten, err := file.Write(byteSlice)
 
@@ -25,4 +26,13 @@ func main() {
 	}
 
 	log.Printf("Колличество записанных байт: %d\n ", byteWritten)
+
+	// Создание(если нет) файла и запись в него слайса байт
+	bs := []byte("Путь начинается с маленького шага...")
+	err = ioutil.WriteFile("b.txt", bs, 0644)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("Колличество записанных байт: %d\n ", len(bs))
 }
