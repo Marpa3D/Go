@@ -44,6 +44,14 @@ func main() {
 		log.Fatal(err)
 	}
 	log.Printf("Содержимое файла: %s", data)
+	log.Printf("Считано байт из файла: %d", len(data))
+
+	// 4. Быстрый и полезный способ считать содержимое файла в байтовый слайс!
+	data, err = ioutil.ReadFile("data.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Printf("Содержимое файла: %s\n", data)
 
 	fmt.Println(strings.Repeat("*", 22))
 	fmt.Println("Конец программы")
