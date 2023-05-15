@@ -1,1 +1,8 @@
-package readBytesFile
+// Считывание n байт из файла Считывание файла с помощью буферизованного считывателя
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Конец программы")
+}
