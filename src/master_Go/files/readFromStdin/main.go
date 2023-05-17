@@ -4,6 +4,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -28,5 +29,8 @@ func main() {
 			fmt.Println("Выход из сканирования...")
 			break
 		}
+	}
+	if err := scanner.Err(); err != nil {
+		log.Println(err)
 	}
 }
