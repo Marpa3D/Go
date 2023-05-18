@@ -31,4 +31,10 @@ func main() {
 	fmt.Println(strings.Repeat("*", 54))
 	fmt.Println("Равны ли две структуры?)")
 	fmt.Println(myBook == newBook)
+
+	// Копирование структур
+	fmt.Printf("Adress myBook: %p, Value: %+v\nAdress newBook: %p, Value: %+v\n", &myBook, myBook, &newBook, newBook)
+	myBook = newBook
+	myBook.year = 2018
+	fmt.Printf("Adress myBook: %p, Value: %+v\nAdress newBook: %p, Value: %+v\n", &myBook, myBook, &newBook, newBook)
 }
