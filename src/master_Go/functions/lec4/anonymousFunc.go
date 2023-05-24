@@ -3,6 +3,13 @@ package main
 
 import "fmt"
 
+func inc(n int) func() int {
+	return func() int {
+		n++
+		return n
+	}
+}
+
 func main() {
 	// Anonymous function - это функция, котороая не имеет имени
 	//и объявляется в строке с помощью литерала функции.
@@ -10,4 +17,10 @@ func main() {
 	func(msg string) {
 		fmt.Println(msg)
 	}("Это анонимная функция.")
+
+	// Польза в том, что анонимная функция может возвращать другую функцию!
+	a := inc(20)
+	fmt.Printf("%T\n", a)
+	a()              // увлеичение на единицу, 21
+	fmt.Println(a()) // увеличение еще на еденицу, 22!
 }
